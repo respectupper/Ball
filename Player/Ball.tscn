@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvqkskb3ihn68"]
+
+[ext_resource type="Script" path="res://Player/Ball.gd" id="1_oatlk"]
+[ext_resource type="Shader" path="res://Player/Ball.gdshader" id="2_16x60"]
+[ext_resource type="Texture2D" uid="uid://cxrmqjllqk7ty" path="res://icon.svg" id="3_j782d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rkfa2"]
+shader = ExtResource("2_16x60")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sto5"]
+radius = 19.0
+
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_oatlk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rkfa2")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_j782d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4sto5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
