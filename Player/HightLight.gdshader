@@ -1,6 +1,5 @@
 shader_type canvas_item;
 
-uniform vec4 base_color : source_color;
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
@@ -8,8 +7,8 @@ void vertex() {
 void fragment() {
 	vec2 uv = UV;
 	vec4 t = texture(TEXTURE,uv);
-	if(length(uv-0.5) < 0.5){
-		COLOR = t * base_color;
+	if(length(uv-0.3) < 0.08){
+		COLOR = smoothstep(t+0.6,t-0.2,t);
 	}else{
 		discard;
 	}

@@ -1,25 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvqkskb3ihn68"]
+[gd_scene load_steps=8 format=3 uid="uid://bvqkskb3ihn68"]
 
 [ext_resource type="Script" path="res://Player/Ball.gd" id="1_oatlk"]
 [ext_resource type="Shader" path="res://Player/Ball.gdshader" id="2_16x60"]
 [ext_resource type="Texture2D" uid="uid://cxrmqjllqk7ty" path="res://icon.svg" id="3_j782d"]
+[ext_resource type="Shader" path="res://Player/HightLight.gdshader" id="3_pa4a5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rkfa2"]
 shader = ExtResource("2_16x60")
+shader_parameter/base_color = Color(0.579242, 0.588957, 0.958376, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sto5"]
 radius = 19.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_577xg"]
+shader = ExtResource("3_pa4a5")
+
 [node name="Ball" type="CharacterBody2D"]
 script = ExtResource("1_oatlk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Model" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_rkfa2")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_j782d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_4sto5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="HightLight" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_577xg")
+custom_minimum_size = Vector2(38, 38)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
